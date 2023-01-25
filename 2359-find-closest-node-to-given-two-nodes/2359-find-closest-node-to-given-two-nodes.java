@@ -15,8 +15,11 @@ class Solution {
         dist1[node1] = 0;
         dist2[node2] = 0;
 
-        dfs(edges, node1, dist1, visited1);
-        dfs(edges, node2, dist2, visited2);
+        // dfs(edges, node1, dist1, visited1);
+        // dfs(edges, node2, dist2, visited2);
+
+        bfs(edges, node1, dist1);
+        bfs(edges, node2, dist2);
 
         int minDistNode = -1;
         int minDistTillNow = Integer.MAX_VALUE;
@@ -40,6 +43,25 @@ class Solution {
             visited[v] = true;
             dist[v] = 1 + dist[node];
             dfs(edges, v, dist, visited);
+        }
+    }
+
+    private static void bfs(int[] edges, int node, int[] dist) {
+        Queue<Integer> que = new LinkedList<>();
+        dist[node] = 0;
+        boolean[] visited = new boolean[edges.length];
+        Arrays.fill(visited, false);
+        que.add(node);
+        visited[node] = true;
+
+        while(!que.isEmpty()) {
+            int u = que.poll();
+            int v = edges[u];
+            if (v != -1 && !visited[v]) {
+                visited[v] = true;
+                dist[v] = 1 + dist[u];
+                que.add(v);
+            }
         }
     }
 }

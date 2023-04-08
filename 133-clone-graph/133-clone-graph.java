@@ -18,31 +18,33 @@ class Node {
 }
 */
 
-class Solution {
+class Solution { // BFS
     public Node cloneGraph(Node node) {
         if(node == null) return null;
         
         Map<Node, Node> mp = new HashMap<>(); // {originalNode -> cloneNode}
         
-        Node cloneNode = new Node(node.val); // clone the given node
-        mp.put(node, cloneNode);
+        Node currCloneNode = new Node(node.val); // clone the given node
+        mp.put(node, currCloneNode);
         
-        dfs(node, cloneNode, mp); // clone above node's neighbours & recursively their neighbours
+        Queue<Node> q = new ArrayDeque<>(); // clone above node's neighbours & recursively their neighbours
+        q.add(node);
         
-        return cloneNode;
-    }
-    public void dfs(Node node, Node currCloneNode, Map<Node, Node> mp) {
-        for(Node n : node.neighbors) {
-            if(mp.get(n) == null) { // if clone of the original node doesn't exists
-                Node cloneNode = new Node(n.val);
-                mp.put(n, cloneNode);
+        while(!q.isEmpty()) {
+            Node currNode = q.remove();
+            
+            for(Node n : currNode.neighbors) {
+                if(mp.get(n) == null) { // if clone of the original node doesn't exists
+                    Node cloneNode = new Node(n.val);
+                    mp.put(n, cloneNode);
+                    mp.get(currNode).neighbors.add(cloneNode);
+                    q.add(n);
+                } 
                 
-                currCloneNode.neighbors.add(cloneNode);
-                
-                dfs(n, cloneNode, mp);
-            } else {
-                currCloneNode.neighbors.add(mp.get(n)); // if a node reappears add it's corresponding cloneNode
+                else 
+                    mp.get(currNode).neighbors.add(mp.get(n)); // if a node reappears add it's corresponding cloneNode
             }
         }
+        return currCloneNode;
     }
 }

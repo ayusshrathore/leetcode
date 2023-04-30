@@ -1,5 +1,5 @@
 
-class Solution {
+class Solution { //bfs
     public int numSimilarGroups(String[] strs) {
         int n = strs.length;
         
@@ -15,23 +15,31 @@ class Solution {
         int count = 0;
         for (int i = 0; i < n; i++) 
             if (!visited[i]) {
-                dfs(i, adj, visited);
+                bfs(i, adj, visited);
                 count++;
             }
         
         return count;
     }
-    private void dfs(int u, Map<Integer, List<Integer>> adj, boolean visited[]) { // classic dfs
+    private void bfs(int u, Map<Integer, List<Integer>> adj, boolean visited[]) { // classic bfs
+        Queue<Integer> q = new ArrayDeque<>();
+        
+        q.add(u);
         visited[u] = true;
         
-        if (!adj.containsKey(u))
-            return;
-        
-        for (int v : adj.get(u)) 
-            if (!visited[v]) 
-                dfs(v, adj, visited);
+        while(!q.isEmpty()) {
+            int ele = q.remove();
+                
+            if(!adj.containsKey(ele))
+                return;
             
-        
+            for(int v : adj.get(ele))
+                if(!visited[v]) {
+                    visited[v] = true;
+                    q.add(v);
+                }
+        }
+            
     }
     private boolean isSimilar(String s1, String s2) {
         int m = s1.length();

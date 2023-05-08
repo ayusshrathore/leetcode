@@ -1,16 +1,19 @@
 class Solution {
     public int diagonalSum(int[][] mat) {
-        int n = mat.length, m = mat[0].length, res = 0;
+        int n = mat.length, res = 0, row = 0;
         
-        int row = 0;
         for(int[] arr : mat) {
+            int firstEle = arr[row];
+            int secondEle = arr[n-row-1];
+            
             if(row == n-row-1) {
-                res += arr[row];
+                res += firstEle;
                 row++;
                 continue;
             }
-            res += arr[row];
-            res += arr[n-row-1];
+            
+            res += firstEle;
+            res += secondEle;
             
             row++;
         }

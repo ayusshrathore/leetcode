@@ -1,4 +1,4 @@
-class Solution {
+class Solution { // Simulation, Arrays
     public int[][] generateMatrix(int n) {
         int[][] mat = new int[n][n];
         

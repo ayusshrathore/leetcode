@@ -1,19 +1,4 @@
-class Solution {
-    public int maxUncrossedLines(int[] nums1, int[] nums2) {
-        int n = nums1.length, m = nums2.length;
-        int[][] dp = new int[n+1][m+1];
-        
-        for(int[] arr : dp) // 2 indices are changing i, j
-            Arrays.fill(arr, -1);
-        
-        return solve(0, 0, n, m, nums1, nums2, dp);
-    }
-    public int solve(int i, int j, int n, int m, int[] nums1, int[] nums2, int[][] dp) {
-        if(i >= n || j >= m) // as soon as one of the index goes out of bounds
-            return 0;
-        
-        if(dp[i][j] != -1)
-            return dp[i][j];
+class Solution { // top-down approach
         /*
          i  
         [1, 4, 2] // case if both the elements at each indices are same
@@ -29,6 +14,23 @@ class Solution {
         [1, 2, 4]
             j  
         */
+    
+    public int maxUncrossedLines(int[] nums1, int[] nums2) {
+        int n = nums1.length, m = nums2.length;
+        int[][] dp = new int[n+1][m+1];
+        
+        for(int[] arr : dp) // 2 indices are changing i, j
+            Arrays.fill(arr, -1);
+        
+        return solve(0, 0, n, m, nums1, nums2, dp);
+    }
+    public int solve(int i, int j, int n, int m, int[] nums1, int[] nums2, int[][] dp) {
+        if(i >= n || j >= m) // as soon as one of the index goes out of bounds
+            return 0;
+        
+        if(dp[i][j] != -1)
+            return dp[i][j];
+        
         if(nums1[i] == nums2[j])
             return dp[i][j] = 1 + solve(i+1, j+1, n, m, nums1, nums2, dp);
         

@@ -1,23 +1,16 @@
-class Solution { // top-down approach
+class Solution { // bottom-up approach
     public long mostPoints(int[][] questions) {
         int n = questions.length;
-        long[] dp = new long[n];
+        long[] dp = new long[200001]; // dp[i] states that -> max points gained from [i to n-1]
         
-        Arrays.fill(dp, -1);
+        for(int i = n-1; i >= 0; i--) {
+            long take = questions[i][0] + dp[i+1+questions[i][1]];
+            
+            long notTake = dp[i+1];
+            
+            dp[i] = Math.max(take, notTake);
+        }
         
-        return solve(0, n, questions, dp);
-    }
-    public long solve(int i, int n, int[][] questions, long[] dp) {
-        if(i >= n)
-            return 0;
-        
-        if(dp[i] != -1)
-            return dp[i];
-        
-        long take = questions[i][0] + solve((i+1)+questions[i][1], n, questions, dp); // since there is 1based indexing so (i+1)
-        
-        long notTake = solve(i+1, n, questions, dp);
-        
-        return dp[i] = Math.max(take, notTake);
+        return dp[0]; // moving from right to left since we can't acutally keep a track of which Ques to skip if we are moving from left -> rigth
     }
 }

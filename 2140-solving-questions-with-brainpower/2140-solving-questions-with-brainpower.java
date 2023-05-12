@@ -1,4 +1,4 @@
-class Solution {
+class Solution { // top-down approach
     public long mostPoints(int[][] questions) {
         int n = questions.length;
         long[] dp = new long[n];

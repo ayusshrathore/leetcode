@@ -60,9 +60,6 @@ class Solution { // DFS
             String v = p.getKey();
             double val = p.getValue();
             
-            if(!adj.containsKey(v))
-                continue;
-            
             dfs(adj, v, dest, visited, product*val);
         }
     }

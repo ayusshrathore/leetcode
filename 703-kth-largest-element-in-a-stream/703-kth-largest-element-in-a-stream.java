@@ -5,17 +5,20 @@ class KthLargest {
     public KthLargest(int k, int[] nums) {
         pq = new PriorityQueue<Integer>((a, b) -> a - b);
         
-        for(int num : nums)
+        for(int num : nums) {
             pq.add(num);
+            
+            if(pq.size() > k)
+                pq.poll();
+        }
         
-        System.out.println(pq);
         K = k;
     }
     
     public int add(int val) {
         pq.add(val);
         
-        while(pq.size() > K)
+        if(pq.size() > K)
             pq.poll();
         
         return pq.peek();

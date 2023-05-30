@@ -1,23 +1,33 @@
 class MyHashSet {
-    Map<Integer, Integer> mp;
+    private int[] arr;
+    private int size = 10000000;
     
     public MyHashSet() {
-        mp = new HashMap<Integer, Integer>();
+        arr = new int[size];
+        Arrays.fill(arr, -1);
     }
     
     public void add(int key) {
-        if(mp.containsKey(key))
-            return;
+        int index = hash(key);
         
-        mp.put(key, 1);
+        if(arr[index] == -1)
+            arr[index] = key;
     }
     
-    public void remove(int key) {
-        mp.remove(key);
+    public void remove(int key) {   
+        int index = hash(key);
+        
+        arr[index] = -1;
     }
     
     public boolean contains(int key) {
-        return mp.containsKey(key);
+        int index = hash(key);
+        
+        return arr[index] != -1;
+    }
+    
+    private int hash(int key) {
+        return key % size;
     }
 }
 

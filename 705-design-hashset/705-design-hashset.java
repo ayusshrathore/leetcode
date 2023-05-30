@@ -1,29 +1,29 @@
 class MyHashSet {
-    private int[] arr;
-    private int size = 10000000;
+    private Map<Integer, Integer> mp; // {hashedIndex (key), given key (value)}
+    private int size = 100_000_000;
     
     public MyHashSet() {
-        arr = new int[size];
-        Arrays.fill(arr, -1);
+        mp = new HashMap<Integer, Integer>();
     }
     
     public void add(int key) {
         int index = hash(key);
         
-        if(arr[index] == -1)
-            arr[index] = key;
+        if(!mp.containsKey(index))
+            mp.put(index, key);
     }
     
     public void remove(int key) {   
         int index = hash(key);
         
-        arr[index] = -1;
+        if(mp.containsKey(index))
+            mp.remove(index);
     }
     
     public boolean contains(int key) {
         int index = hash(key);
         
-        return arr[index] != -1;
+        return mp.containsKey(index);
     }
     
     private int hash(int key) {

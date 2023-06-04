@@ -6,34 +6,21 @@ class Solution { // DFS
         n = isConnected.length;
             
         boolean[] visited = new boolean[n];
-        Map<Integer, List<Integer>> adj = new HashMap<>();
-        
-        for(int i = 0; i < n; i++) {
-            for(int j = 0; j < n; j++) {
-                if(isConnected[i][j] == 1) { // means connected to each other (undirected)
-                    adj.computeIfAbsent(i, k -> new ArrayList<>()).add(j);
-                    adj.computeIfAbsent(j, k -> new ArrayList<>()).add(i);
-                } 
-            }
-        }
         
         for(int i = 0; i < n; i++)
             if(!visited[i]) {
-                dfs(i, adj, visited);
+                dfs(i, visited, isConnected);
                 count++;
             }
         
         return count;
     }
-    private void dfs(int u, Map<Integer, List<Integer>> adj, boolean[] visited) {
-        visited[u] = true; // mark as visited
+    private void dfs(int u, boolean[] visited, int[][] isConnected) {
+        visited[u] = true;
         
-        if(!adj.containsKey(u))
-            return;
-        
-        for(int v : adj.get(u)) {
-            if(!visited[v]) 
-                dfs(v, adj, visited);
-        }
+        for(int v = 0; v < n; v++)
+            if(!visited[v] && isConnected[u][v] == 1) {
+                dfs(v, visited, isConnected);
+            }
     }
 }

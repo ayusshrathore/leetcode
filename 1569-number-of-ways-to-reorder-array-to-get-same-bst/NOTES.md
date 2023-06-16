@@ -1,0 +1,1 @@
+We can make use of Pascal's traingle to precompute combinations

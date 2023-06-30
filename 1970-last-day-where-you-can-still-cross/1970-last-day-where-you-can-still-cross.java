@@ -1,4 +1,4 @@
-class Solution { // DFS
+class Solution { // BFS
     private int ROW;
     private int COL;
     
@@ -40,31 +40,36 @@ class Solution { // DFS
         
         for(int j = 0; j < COL; j++) {
             
-            if(grid[0][j] == 0 && DFS(grid, 0, j)) { // if land start from the first row of that col
+            if(grid[0][j] == 0 && BFS(grid, 0, j)) { // if land start from the first row of that col
                 return true;
             }
         }
         
         return false;
     }
-    public boolean DFS(int[][] grid, int i, int j) {
+    public boolean BFS(int[][] grid, int i, int j) {
         
-        if(i < 0 || i >= ROW || j < 0 || j >= COL || grid[i][j] == 1) // out of bounds or visited
-            return false;
+        Queue<Pair<Integer, Integer>> que = new ArrayDeque<>();
+        que.add(new Pair<>(i, j));
+        grid[i][j] = 1; // fill water
         
-        
-        if(i == ROW - 1) // reached end of the col
-            return true;
-        
-        grid[i][j] = 1; // mark visited;
-        
-        for(int[] dir : directions) { // exploring all four sides
+        while(!que.isEmpty()) {
+            Pair<Integer, Integer> p = que.poll();
             
-            int new_i = i + dir[0];
-            int new_j = j + dir[1];
+            int x = p.getKey();
+            int y = p.getValue();
             
-            if(DFS(grid, new_i, new_j)) {
+            if(x == ROW - 1)
                 return true;
+            
+            for(int[] dir : directions) { // explore all neighbours
+                int new_x = x + dir[0];
+                int new_y = y + dir[1];
+                
+                if(new_x >= 0 && new_x < ROW && new_y >= 0 && new_y < COL && grid[new_x][new_y] == 0) {
+                    grid[new_x][new_y] = 1; // mark visited
+                    que.add(new Pair<>(new_x, new_y));
+                }
             }
         }
         

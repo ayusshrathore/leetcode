@@ -53,12 +53,12 @@ class Solution { // DFS
             return false;
         
         
-        if(i == ROW - 1)
+        if(i == ROW - 1) // reached end of the col
             return true;
         
         grid[i][j] = 1; // mark visited;
         
-        for(int[] dir : directions) {
+        for(int[] dir : directions) { // exploring all four sides
             
             int new_i = i + dir[0];
             int new_j = j + dir[1];

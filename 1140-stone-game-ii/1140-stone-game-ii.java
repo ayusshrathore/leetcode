@@ -1,4 +1,4 @@
-class Solution { // DP
+class Solution { // DP states dp[2][n+1][n+1] -> O(2 * n * n) * n (for loop for stones) -> O(n^2*n) -> O(n^3)
     
     /* GAME STRATEGY
         when it's your turn, do the best

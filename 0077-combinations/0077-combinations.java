@@ -1,19 +1,20 @@
 class Solution {
     public List<List<Integer>> combine(int n, int k) {
-        List<List<Integer>> res = new ArrayList<>();
-        f(1, n, k, new ArrayList<Integer>(), res);
-        return res;
+        List<List<Integer>> ans = new ArrayList<>();
+        f(1, n, k, ans, new ArrayList<Integer>());
+        return ans;
     }
 
-    private void f(int idx, int n, int k, List<Integer> list, List<List<Integer>> res) {
+    private void f(int start, int end, int k, List<List<Integer>> ans, List<Integer> ds) {
         if (k == 0) {
-            res.add(new ArrayList<>(list));
+            ans.add(new ArrayList<Integer>(ds));
             return;
         }
-        for (int i = idx; i <= n - k + 1; i++) {
-            list.add(i);
-            f(i + 1, n, k - 1, list, res);
-            list.remove(list.size() - 1);
+
+        for (int i = start; i <= end; i++) {
+            ds.add(i);
+            f(i + 1, end, k - 1, ans, ds);
+            ds.remove(ds.size() - 1);
         }
     }
 }

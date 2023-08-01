@@ -6,6 +6,10 @@ class Solution {
     }
 
     private void f(int start, int end, int k, List<List<Integer>> ans, List<Integer> ds) {
+        if (end - start + 1 < k) {
+            return;
+        }
+        
         if (k == 0) {
             ans.add(new ArrayList<Integer>(ds));
             return;

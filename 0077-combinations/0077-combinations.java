@@ -1,24 +1,28 @@
-class Solution {
+class Solution { // (BackTracking), TC: O(2^n)
+    private List<List<Integer>> res;
+    
     public List<List<Integer>> combine(int n, int k) {
-        List<List<Integer>> ans = new ArrayList<>();
-        f(1, n, k, ans, new ArrayList<Integer>());
-        return ans;
+        this.res = new ArrayList<>();
+        
+        solve(n, k, 1, new ArrayList<>());
+        
+        return res;
     }
-
-    private void f(int start, int end, int k, List<List<Integer>> ans, List<Integer> ds) {
-        if (end - start + 1 < k) {
+    private void solve(int n, int k, int idx, List<Integer> tmp) { 
+        if(k == 0) {
+            res.add(new ArrayList<>(tmp));
             return;
         }
         
-        if (k == 0) {
-            ans.add(new ArrayList<Integer>(ds));
+        // Prune the search space if there are not enough elements remaining to form a combination of size 'k'
+        if (n - idx + 1 < k) {
             return;
         }
-
-        for (int i = start; i <= end; i++) {
-            ds.add(i);
-            f(i + 1, end, k - 1, ans, ds);
-            ds.remove(ds.size() - 1);
-        }
+        
+        tmp.add(idx);
+        solve(n, k-1, idx+1, tmp);
+        
+        tmp.remove(tmp.size()-1);
+        solve(n, k, idx+1, tmp);
     }
 }

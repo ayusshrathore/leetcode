@@ -31,17 +31,23 @@ The pattern for calculating the number of unique BSTs is clear: the number of un
 */
 class Solution { // TOP-DOWN, TC: O(n * m), where m = nth Catalan number
     public int numTrees(int n) {
-        return solve(n);
+        int[] dp = new int[n+1];
+        Arrays.fill(dp, -1);
+        
+        return solve(n, dp);
     }
-    private int solve(int n) {
+    private int solve(int n, int[] dp) {
         if(n <= 1)
             return 1;
+            
+        if(dp[n] != -1)
+            return dp[n];
         
         int nthCatalan = 0;
         for(int i = 0; i < n; i++) {
-            nthCatalan += solve(i) * solve(n-i-1);
+            nthCatalan += solve(i, dp) * solve(n-i-1, dp);
         }
         
-        return nthCatalan;
+        return dp[n] = nthCatalan;
     }
 }

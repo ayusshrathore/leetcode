@@ -22,7 +22,7 @@ class Solution {
         if (dp.containsKey(key))
             return dp.get(key);
         
-        for (int i = start; i <= end; i++) { // make each and every node between start and end as root node
+        for (int i = start; i <= end; i++) { // make each and every node between start and end as root node recursively
             
             List<TreeNode> leftBSTrees = solve(start, i - 1, dp);
             List<TreeNode> rightBSTrees = solve(i + 1, end, dp);

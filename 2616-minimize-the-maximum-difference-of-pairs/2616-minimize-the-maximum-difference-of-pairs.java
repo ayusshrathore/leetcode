@@ -26,12 +26,12 @@ class Solution { // Greedy + Binary Search O(n * log(n))
         while(i < n - 1) {
             int diff = nums[i + 1] - nums[i];
             
-            if(diff <= target) {
+            if(diff <= target) { 
                 count++;
-                i+=2;     
+                i+=2;     // taken this diff into consideration
             }
             
-            else i++;
+            else i++; // skipped this diff
         }
         
         return count;

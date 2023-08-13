@@ -18,27 +18,18 @@ class Solution { // DP, TOP-DOWN, TC: O(n)
         // rule 1
         if(i+1 < n && nums[i] == nums[i+1]) {
             result |= solve(i+2, n, nums, dp);
-            
-            if(result)
-                return dp[i] = true;
         }
         
         // rule 2
         if(i+2 < n && nums[i] == nums[i+1] && nums[i+1] == nums[i+2]) {
             result |= solve(i+3, n, nums, dp);
-            
-            if(result)
-                return dp[i] = true;
         }
         
         // rule 3
         if(i+2 < n && nums[i+1] - nums[i] == 1 && nums[i+2] - nums[i+1] == 1) {
             result |= solve(i+3, n, nums, dp);
-            
-            if(result)
-                return dp[i] = true;
         }
         
-        return dp[i] = false;
+        return dp[i] = result;
     }
 }

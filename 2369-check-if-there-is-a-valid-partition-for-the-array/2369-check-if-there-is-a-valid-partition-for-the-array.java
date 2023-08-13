@@ -18,18 +18,39 @@ class Solution { // DP, TOP-DOWN, TC: O(n)
         // rule 1
         if(i+1 < n && nums[i] == nums[i+1]) {
             result |= solve(i+2, n, nums, dp);
+<<<<<<< HEAD
+=======
+            
+            if(result)
+                return dp[i] = true;
+>>>>>>> edca53a (Time: 10 ms (61.17%), Space: 63.1 MB (15.53%) - LeetHub)
         }
         
         // rule 2
         if(i+2 < n && nums[i] == nums[i+1] && nums[i+1] == nums[i+2]) {
             result |= solve(i+3, n, nums, dp);
+<<<<<<< HEAD
+=======
+            
+            if(result)
+                return dp[i] = true;
+>>>>>>> edca53a (Time: 10 ms (61.17%), Space: 63.1 MB (15.53%) - LeetHub)
         }
         
         // rule 3
         if(i+2 < n && nums[i+1] - nums[i] == 1 && nums[i+2] - nums[i+1] == 1) {
             result |= solve(i+3, n, nums, dp);
+<<<<<<< HEAD
         }
         
         return dp[i] = result;
+=======
+            
+            if(result)
+                return dp[i] = true;
+        }
+        
+        return dp[i] = false;
+>>>>>>> edca53a (Time: 10 ms (61.17%), Space: 63.1 MB (15.53%) - LeetHub)
     }
 }

@@ -130,11 +130,11 @@ dist
 .pnp.*
 
 # scripts
-main.ts
+main.js
 
-# package files
-package.json
-bun.lockb
+# # package files
+# package.json
+# bun.lockb
 
-# config files
-tsconfig.json
+# # config files
+# tsconfig.json

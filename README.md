@@ -48,7 +48,7 @@ Ready to embark on the LeetCoding Quest for Hacktoberfest 2023? Let's write some
 
 Contributions are welcome and greatly appreciated! Please follow the [guidelines](CONTRIBUTING.md) when contributing to this project.
 
-# Contributors
+## Contributors
 
 <!-- CONTRIBUTORS_START -->
 

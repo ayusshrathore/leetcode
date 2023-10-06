@@ -82,6 +82,15 @@ Contributions are welcome and greatly appreciated! Please follow the [guidelines
             </div>
           </a>
         </td> <td align="center">
+          <a href="https://github.com/Anubhav099">
+            <div style="position: relative;">
+              <img src="https://github.com/Anubhav099.png" width="100px;" alt="Anubhav099" style="border-radius: 50%;" title="Anubhav099" />
+              <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; align-items: center; background-color: rgba(0, 0, 0, 0.7); color: white; opacity: 0; transition: opacity 0.3s;">
+                <sub style="font-weight: bold;">Anubhav099</sub>
+              </div>
+            </div>
+          </a>
+        </td> <td align="center">
           <a href="https://github.com/Rishabh-Saket">
             <div style="position: relative;">
               <img src="https://github.com/Rishabh-Saket.png" width="100px;" alt="Rishabh-Saket" style="border-radius: 50%;" title="Rishabh-Saket" />

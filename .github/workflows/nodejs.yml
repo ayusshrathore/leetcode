@@ -1,4 +1,4 @@
-name: Run Node.js Script
+name: Run Node.js Script and Commit Changes
 
 on:
     push:
@@ -21,5 +21,17 @@ jobs:
             - name: Install Dependencies
               run: npm install
 
+            - name: Compile TypeScript
+              run: npx tsc ./main.ts
+
             - name: Run Script
-              run: npx tsc ./main.ts && node ./main.js
+              run: node ./main.js
+
+            - name: Stage Changes
+              run: git add .
+
+            - name: Commit Changes
+              run: git commit -m "chore(docs):Sync contributors"
+
+            - name: Push Changes
+              run: git push origin main

@@ -32,3 +32,5 @@ Constraints:
 2 <= s.length <= 1000
 s[i] is either 'L' or 'R'.
 s is a balanced string.
+
+Link: https://leetcode.com/problems/split-a-string-in-balanced-strings/description/

@@ -73,6 +73,24 @@ Contributions are welcome and greatly appreciated! Please follow the [guidelines
             </div>
           </a>
         </td> <td align="center">
+          <a href="https://github.com/ridhi551">
+            <div style="position: relative;">
+              <img src="https://github.com/ridhi551.png" width="100px;" alt="ridhi551" style="border-radius: 50%;" title="ridhi551" />
+              <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; align-items: center; background-color: rgba(0, 0, 0, 0.7); color: white; opacity: 0; transition: opacity 0.3s;">
+                <sub style="font-weight: bold;">ridhi551</sub>
+              </div>
+            </div>
+          </a>
+        </td> <td align="center">
+          <a href="https://github.com/DheerajTanwar-11">
+            <div style="position: relative;">
+              <img src="https://github.com/DheerajTanwar-11.png" width="100px;" alt="DheerajTanwar-11" style="border-radius: 50%;" title="DheerajTanwar-11" />
+              <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; align-items: center; background-color: rgba(0, 0, 0, 0.7); color: white; opacity: 0; transition: opacity 0.3s;">
+                <sub style="font-weight: bold;">DheerajTanwar-11</sub>
+              </div>
+            </div>
+          </a>
+        </td> <td align="center">
           <a href="https://github.com/mukherjeeSumit">
             <div style="position: relative;">
               <img src="https://github.com/mukherjeeSumit.png" width="100px;" alt="mukherjeeSumit" style="border-radius: 50%;" title="mukherjeeSumit" />

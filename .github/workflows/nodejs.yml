@@ -27,6 +27,11 @@ jobs:
             - name: Run Script
               run: node ./main.js
 
+            - name: Configure Git Identity
+              run: |
+                  git config --global user.email "aaravmishra619@gmail.com"
+                  git config --global user.name "aaaravv"
+
             - name: Stage Changes
               run: git add .
 

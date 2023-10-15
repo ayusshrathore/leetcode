@@ -1,0 +1,15 @@
+{
+  "name": "leetcode",
+  "module": "main.ts",
+  "devDependencies": {
+    "@types/node": "^20.8.2",
+    "bun-types": "latest"
+  },
+  "dependencies": {
+    "@octokit/rest": "^18.0.0",
+    "typescript": "^5.2.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

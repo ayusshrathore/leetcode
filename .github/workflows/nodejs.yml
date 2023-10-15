@@ -1,0 +1,42 @@
+name: Run Node.js Script and Commit Changes
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v2
+              with:
+                  node-version: 16
+
+            - name: Install Dependencies
+              run: npm install
+
+            - name: Compile TypeScript
+              run: npx tsc ./main.ts
+
+            - name: Run Script
+              run: node ./main.js
+
+            - name: Configure Git Identity
+              run: |
+                  git config --global user.email "aaravmishra619@gmail.com"
+                  git config --global user.name "aaaravv"
+
+            - name: Stage Changes
+              run: git add .
+
+            - name: Commit Changes
+              run: git commit -m "chore(docs):Sync contributors"
+
+            - name: Push Changes
+              run: git push origin main
